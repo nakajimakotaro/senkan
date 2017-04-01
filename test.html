@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+        <script src=https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.4.2/pixi.min.js></script>
+        <script>
+        console.time("fromImage");
+        for(let i = 0;i < 100;i++){
+            new PIXI.Sprite.fromImage("image/sun-ship.png");
+        }
+        console.timeEnd("fromImage");
+        console.time("loader");
+        for(let i = 0;i < 1000;i++){
+            PIXI.loader.add("image/sun-ship.png")
+        }
+        PIXI.loader.load(()=>{
+            console.timeEnd("loader");
+        });
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
