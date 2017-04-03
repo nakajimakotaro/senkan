@@ -2,25 +2,43 @@ import "pixi.js";
 import {Game} from "./script";
 import {GameObject} from "./gameObject";
 import {GameObjectGenerator} from "./gameObjectGenerator";
+import {Shape,Circle} from "./shape";
 export abstract class Organization{
     game:Game;
     name:string;
     direction:"left"|"right";
     money = 0;
-    moneyTextSprite:PIXI.Text;
     constructor(game:Game, config:any){
         this.game = game;
         this.name = config.name;
         this.direction = config.direction;
 
-        this.moneyTextSprite = new PIXI.Text(this.money.toString(), {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
-        this.game.level.view.addChild(this.moneyTextSprite);
     }
     update(){
-        //マネー
-        this.money++;
-        this.moneyTextSprite.x = this.direction == "right" ? this.game.app.screen.width - this.moneyTextSprite.width : 0;
-        this.moneyTextSprite.text = this.money.toString();
+        this.moneyUpdate();
+    }
+
+    //マネー
+    moneyUpdate(){
+        if(this.money < 1000){
+            this.money++;
+        }
+    }
+    draw(renderer: PIXI.Graphics){
+        this.moneyDraw(renderer);
+    }
+
+    moneyDraw(renderer:PIXI.Graphics){
+        renderer.beginFill(0xff0000);
+
+        let moneyCount = Math.floor(this.money / 100);
+        for(let i = 0;i < moneyCount;i++){
+            let r = 6;
+            let x = this.direction == "right" ? this.game.app.screen.width : 0;
+                x += (this.direction == "right" ? -1 : 1) * ((r * 2 + 3) * i + r + r);
+            let y = r + r;
+            renderer.drawCircle(x, y, r);
+        }
     }
 
     createWeapon(weaponName:string, game:Game, x:number, y:number, direction:"left"|"right"):GameObject|null{

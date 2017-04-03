@@ -58,8 +58,8 @@
                     "x": 800,
                     "y": 370
                 },
-                "cost": 250,
-                "hp": 20,
+                "cost": 300,
+                "hp": 25,
                 "imagePath": "image/sun-GShip.png"
             }
         },

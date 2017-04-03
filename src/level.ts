@@ -84,6 +84,10 @@ export class Level extends GameObject{
         this.removeQueueList = [];
     }
     draw(renderer: PIXI.Graphics){
+        for(let key in this.organizationMap){
+            let organization = this.organizationMap[key];
+            organization.draw(renderer);
+        }
         for(let object of this.gameObjectList){
             object.draw(renderer);
         }

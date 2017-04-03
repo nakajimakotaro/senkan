@@ -58,6 +58,7 @@ class WeaponCard{
     shape:Rectangle; //カードの場所と形
     backgroundSprite:PIXI.Sprite; //カードの背景画像
     weaponSprite:PIXI.Sprite; //兵器の画像
+    costView:PIXI.Graphics;
     constructor(game:Game, weaponSelectPanel:WeaponSelectPanel, weaponName:string, shape:Rectangle){
         this.game = game;
         this.weaponSelectPanel = weaponSelectPanel;
@@ -85,7 +86,21 @@ class WeaponCard{
                 this.weaponSprite.x = this.shape.x + this.shape.width / 2 - this.weaponSprite.width / 2;
                 this.weaponSprite.y = this.shape.y + this.shape.height / 2 - this.weaponSprite.height / 2;
                 this.game.level.view.addChild(this.weaponSprite);
+                this.game.level.view.addChild(this.costView);
             });
+
+        //コストを表す円
+        this.costView = new PIXI.Graphics();
+        this.costView.beginFill(0xff0000);
+
+        let cost = this.game.level.levelData["WeaponList"]["sun"][weaponName]["cost"];
+        let costNum = Math.floor(cost / 100);
+        for(let i = 0;i < costNum;i++){
+            let r = 6;
+            let x = this.shape.x + (r * 2 + 3) * i + r + r;
+            let y = this.shape.y + r + r;
+            this.costView.drawCircle(x, y, r);
+        }
     }
 
     createWeapon():GameObject|null{
