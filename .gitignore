@@ -57,6 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
-puplic/script.js
-puplic/script.js.map
+public/script.js
+public/script.js.map
+public/script.min.js
 senkan-win32-x64/
