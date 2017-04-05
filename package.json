@@ -17,7 +17,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server --host=0.0.0.0",
-    "build": "webpack;electron-packager . senkan --platform=win32"
+    "build": "webpack",
+    "release": "webpack;electron-packager . senkan --platform=win32"
   },
   "main": "electron.js"
 }
