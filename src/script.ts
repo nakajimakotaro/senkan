@@ -17,8 +17,7 @@ export class Game{
         this.loader = new Loader();
         document.body.appendChild(this.stats.dom);
 
-        let canvas = document.getElementById("gameCanvas") as HTMLCanvasElement;
-        this.app = new PIXI.Application(960, 540, canvas);
+        this.app = new PIXI.Application(960, 540);
         document.body.appendChild(this.app.view);
 
         this.graphics = new PIXI.Graphics();

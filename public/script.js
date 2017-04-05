@@ -100,7 +100,7 @@ Object.keys(_math).forEach(function (key) {
   });
 });
 
-var _pixiGlCore = __webpack_require__(6);
+var _pixiGlCore = __webpack_require__(5);
 
 Object.defineProperty(exports, 'glCore', {
   enumerable: true,
@@ -1466,6 +1466,37 @@ exports.default = {
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var gl = {
+    createContext:          __webpack_require__(112),
+    setVertexAttribArrays:  __webpack_require__(48),
+    GLBuffer:               __webpack_require__(108),
+    GLFramebuffer:          __webpack_require__(109),
+    GLShader:               __webpack_require__(110),
+    GLTexture:              __webpack_require__(47),
+    VertexArrayObject:      __webpack_require__(111),
+    shader:                 __webpack_require__(113)
+};
+
+// Export for Node-compatible environments
+if (typeof module !== 'undefined' && module.exports)
+{
+    // Export the module
+    module.exports = gl;
+}
+
+// Add to the browser window pixi.gl
+if (typeof window !== 'undefined')
+{
+    // add the window object
+    window.PIXI = window.PIXI || {};
+    window.PIXI.glCore = gl;
+}
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
@@ -1581,37 +1612,6 @@ exports.loader = loader;
 global.PIXI = exports; // eslint-disable-line
 //# sourceMappingURL=index.js.map
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var gl = {
-    createContext:          __webpack_require__(112),
-    setVertexAttribArrays:  __webpack_require__(48),
-    GLBuffer:               __webpack_require__(108),
-    GLFramebuffer:          __webpack_require__(109),
-    GLShader:               __webpack_require__(110),
-    GLTexture:              __webpack_require__(47),
-    VertexArrayObject:      __webpack_require__(111),
-    shader:                 __webpack_require__(113)
-};
-
-// Export for Node-compatible environments
-if (typeof module !== 'undefined' && module.exports)
-{
-    // Export the module
-    module.exports = gl;
-}
-
-// Add to the browser window pixi.gl
-if (typeof window !== 'undefined')
-{
-    // add the window object
-    window.PIXI = window.PIXI || {};
-    window.PIXI.glCore = gl;
-}
-
 
 /***/ }),
 /* 7 */
@@ -2857,7 +2857,7 @@ exports.GameObject = GameObject;
 
 exports.__esModule = true;
 
-var _pixiGlCore = __webpack_require__(6);
+var _pixiGlCore = __webpack_require__(5);
 
 var _settings = __webpack_require__(4);
 
@@ -5019,7 +5019,6 @@ exports.default = _Loader2.default;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
 const gameObject_1 = __webpack_require__(10);
 class Area extends gameObject_1.GameObject {
     constructor(game, type, x, y, width, height) {
@@ -5056,7 +5055,7 @@ exports.Area = Area;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
+const PIXI = __webpack_require__(6);
 const gameObject_1 = __webpack_require__(10);
 const particle_1 = __webpack_require__(205);
 class Weapon extends gameObject_1.GameObject {
@@ -22574,7 +22573,7 @@ var _validateContext2 = _interopRequireDefault(_validateContext);
 
 var _utils = __webpack_require__(2);
 
-var _pixiGlCore = __webpack_require__(6);
+var _pixiGlCore = __webpack_require__(5);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
@@ -23378,7 +23377,7 @@ var _settings = __webpack_require__(4);
 
 var _settings2 = _interopRequireDefault(_settings);
 
-var _pixiGlCore = __webpack_require__(6);
+var _pixiGlCore = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28175,7 +28174,7 @@ function reqType(xhr) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
+const PIXI = __webpack_require__(6);
 const weapon_1 = __webpack_require__(19);
 const area_1 = __webpack_require__(18);
 const gameObject_1 = __webpack_require__(10);
@@ -32454,7 +32453,7 @@ exports.default = SpriteMaskFilter;
 
 exports.__esModule = true;
 
-var _pixiGlCore = __webpack_require__(6);
+var _pixiGlCore = __webpack_require__(5);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
@@ -35713,7 +35712,7 @@ exports.GameObjectGenerator = GameObjectGenerator;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
+__webpack_require__(6);
 const weapon_1 = __webpack_require__(19);
 const overObject_1 = __webpack_require__(99);
 const area_1 = __webpack_require__(18);
@@ -35774,7 +35773,6 @@ exports.Infantry = Infantry;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
 const gameObjectGenerator_1 = __webpack_require__(96);
 class Organization {
     constructor(game, config) {
@@ -35825,7 +35823,7 @@ exports.Organization = Organization;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
+const PIXI = __webpack_require__(6);
 const gameObject_1 = __webpack_require__(10);
 class OverObject {
 }
@@ -35861,7 +35859,7 @@ exports.Flag = Flag;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
+__webpack_require__(6);
 const weapon_1 = __webpack_require__(19);
 const bullet_1 = __webpack_require__(42);
 const area_1 = __webpack_require__(18);
@@ -37016,7 +37014,7 @@ b.fillRect(d,m,n,p);b.fillStyle=l;b.globalAlpha=.9;b.fillRect(d,m,n,p);return{do
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
+const PIXI = __webpack_require__(6);
 const _ = __webpack_require__(21);
 const gameObject_1 = __webpack_require__(10);
 const gameObjectGenerator_1 = __webpack_require__(96);
@@ -37124,8 +37122,8 @@ exports.Level = Level;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
 const _ = __webpack_require__(21);
+const PIXI = __webpack_require__(6);
 const URI = __webpack_require__(209);
 class Loader {
     constructor() {
@@ -40529,7 +40527,7 @@ _WebGLRenderer2.default.registerPlugin('graphics', GraphicsRenderer);
 
 exports.__esModule = true;
 
-var _pixiGlCore = __webpack_require__(6);
+var _pixiGlCore = __webpack_require__(5);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
@@ -42039,7 +42037,7 @@ exports.default = TextureGarbageCollector;
 
 exports.__esModule = true;
 
-var _pixiGlCore = __webpack_require__(6);
+var _pixiGlCore = __webpack_require__(5);
 
 var _const = __webpack_require__(1);
 
@@ -42571,7 +42569,7 @@ exports.default = WebGLState;
 exports.__esModule = true;
 exports.default = extractUniformsFromSrc;
 
-var _pixiGlCore = __webpack_require__(6);
+var _pixiGlCore = __webpack_require__(5);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
@@ -43654,7 +43652,7 @@ exports.default = StencilManager;
 exports.__esModule = true;
 exports.default = checkMaxIfStatmentsInShader;
 
-var _pixiGlCore = __webpack_require__(6);
+var _pixiGlCore = __webpack_require__(5);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
@@ -44084,7 +44082,7 @@ var _settings = __webpack_require__(4);
 
 var _settings2 = _interopRequireDefault(_settings);
 
-var _pixiGlCore = __webpack_require__(6);
+var _pixiGlCore = __webpack_require__(5);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
@@ -53844,7 +53842,7 @@ var _core = __webpack_require__(0);
 
 var core = _interopRequireWildcard(_core);
 
-var _pixiGlCore = __webpack_require__(6);
+var _pixiGlCore = __webpack_require__(5);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
@@ -54327,7 +54325,7 @@ exports.default = ParticleContainer;
 
 exports.__esModule = true;
 
-var _pixiGlCore = __webpack_require__(6);
+var _pixiGlCore = __webpack_require__(5);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
@@ -57231,7 +57229,7 @@ function blobMiddlewareFactory() {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
+__webpack_require__(6);
 const weapon_1 = __webpack_require__(19);
 const bullet_1 = __webpack_require__(42);
 class Bomber extends weapon_1.Weapon {
@@ -57308,7 +57306,7 @@ exports.CPU = CPU;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
+__webpack_require__(6);
 const ship_1 = __webpack_require__(100);
 class GShip extends ship_1.Ship {
     constructor(game, x, y, direction, organization) {
@@ -57331,7 +57329,6 @@ exports.GShip = GShip;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
 const weapon_1 = __webpack_require__(19);
 const area_1 = __webpack_require__(18);
 const infantry_1 = __webpack_require__(97);
@@ -57390,7 +57387,6 @@ exports.Lander = Lander;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
 const gameObject_1 = __webpack_require__(10);
 class Particle extends gameObject_1.GameObject {
     constructor(game, config) {
@@ -57473,7 +57469,7 @@ exports.Player = Player;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(5);
+const PIXI = __webpack_require__(6);
 const Stats = __webpack_require__(104);
 const level_1 = __webpack_require__(105);
 const loader_1 = __webpack_require__(106);
@@ -57482,8 +57478,7 @@ class Game {
         this.stats = new Stats();
         this.loader = new loader_1.Loader();
         document.body.appendChild(this.stats.dom);
-        let canvas = document.getElementById("gameCanvas");
-        this.app = new PIXI.Application(960, 540, canvas);
+        this.app = new PIXI.Application(960, 540);
         document.body.appendChild(this.app.view);
         this.graphics = new PIXI.Graphics();
         this.app.stage.addChild(this.graphics);
@@ -57535,6 +57530,7 @@ req.send(null);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const PIXI = __webpack_require__(6);
 const collision_1 = __webpack_require__(95);
 //Weaponのリストを表示してタッチしたらマップに出す
 class WeaponSelectPanel {
