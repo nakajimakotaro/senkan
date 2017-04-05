@@ -35782,14 +35782,29 @@ class Organization {
         this.game = game;
         this.name = config.name;
         this.direction = config.direction;
-        this.moneyTextSprite = new PIXI.Text(this.money.toString(), { fontFamily: 'Arial', fontSize: 24, fill: 0xffffff, align: 'center' });
-        this.game.level.view.addChild(this.moneyTextSprite);
     }
     update() {
-        //マネー
-        this.money++;
-        this.moneyTextSprite.x = this.direction == "right" ? this.game.app.screen.width - this.moneyTextSprite.width : 0;
-        this.moneyTextSprite.text = this.money.toString();
+        this.moneyUpdate();
+    }
+    //マネー
+    moneyUpdate() {
+        if (this.money < 1000) {
+            this.money++;
+        }
+    }
+    draw(renderer) {
+        this.moneyDraw(renderer);
+    }
+    moneyDraw(renderer) {
+        renderer.beginFill(0xff0000);
+        let moneyCount = Math.floor(this.money / 100);
+        for (let i = 0; i < moneyCount; i++) {
+            let r = 6;
+            let x = this.direction == "right" ? this.game.app.screen.width : 0;
+            x += (this.direction == "right" ? -1 : 1) * ((r * 2 + 3) * i + r + r);
+            let y = r + r;
+            renderer.drawCircle(x, y, r);
+        }
     }
     createWeapon(weaponName, game, x, y, direction) {
         let cost = this.game.level.levelData["WeaponList"][this.name][weaponName]["cost"];
@@ -37067,6 +37082,10 @@ class Level extends gameObject_1.GameObject {
         this.removeQueueList = [];
     }
     draw(renderer) {
+        for (let key in this.organizationMap) {
+            let organization = this.organizationMap[key];
+            organization.draw(renderer);
+        }
         for (let object of this.gameObjectList) {
             object.draw(renderer);
         }
@@ -57576,7 +57595,19 @@ class WeaponCard {
             this.weaponSprite.x = this.shape.x + this.shape.width / 2 - this.weaponSprite.width / 2;
             this.weaponSprite.y = this.shape.y + this.shape.height / 2 - this.weaponSprite.height / 2;
             this.game.level.view.addChild(this.weaponSprite);
+            this.game.level.view.addChild(this.costView);
         });
+        //コストを表す円
+        this.costView = new PIXI.Graphics();
+        this.costView.beginFill(0xff0000);
+        let cost = this.game.level.levelData["WeaponList"]["sun"][weaponName]["cost"];
+        let costNum = Math.floor(cost / 100);
+        for (let i = 0; i < costNum; i++) {
+            let r = 6;
+            let x = this.shape.x + (r * 2 + 3) * i + r + r;
+            let y = this.shape.y + r + r;
+            this.costView.drawCircle(x, y, r);
+        }
     }
     createWeapon() {
         let x = this.entryPoint.x;

@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+puplic/script.js
+puplic/script.js.map
