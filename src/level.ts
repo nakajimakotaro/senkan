@@ -1,4 +1,4 @@
-import "pixi.js";
+import PIXI = require('pixi.js');
 import _ = require('lodash');
 import {Game} from "./script";
 import {GameObject} from "./gameObject";

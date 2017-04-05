@@ -57482,7 +57482,8 @@ class Game {
         this.stats = new Stats();
         this.loader = new loader_1.Loader();
         document.body.appendChild(this.stats.dom);
-        this.app = new PIXI.Application(960, 540);
+        let canvas = document.getElementById("gameCanvas");
+        this.app = new PIXI.Application(960, 540, canvas);
         document.body.appendChild(this.app.view);
         this.graphics = new PIXI.Graphics();
         this.app.stage.addChild(this.graphics);

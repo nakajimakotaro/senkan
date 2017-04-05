@@ -1,3 +1,4 @@
+import PIXI = require('pixi.js');
 import {Shape, Rectangle} from "./shape";
 
 import {Game} from "./script";

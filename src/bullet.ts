@@ -1,4 +1,4 @@
-import "pixi.js";
+import PIXI = require('pixi.js');
 import {Game} from "./script";
 import {Weapon} from "./weapon";
 import {Area} from "./area";

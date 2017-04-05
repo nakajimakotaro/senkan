@@ -1,5 +1,5 @@
-import "pixi.js";
 import _ = require('lodash');
+import PIXI = require('pixi.js');
 import * as URI from "urijs";
 
 export class Loader{

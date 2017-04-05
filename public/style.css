@@ -1,7 +1,5 @@
-/* body { */
-    /* display: flex; */
-    /* justify-content: center; */
-/* } */
-/* #canvas { */
-    /* border-style: solid; */
-/* } */
+#gameCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
