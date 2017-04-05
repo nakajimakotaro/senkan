@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "electron-packager": "^8.6.0",
+    "electron-prebuilt": "^1.4.13",
     "lodash": "^4.17.4",
     "pixi.js": "^4.3.5",
     "stats.js": "^0.17.0",
@@ -15,6 +17,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --host=0.0.0.0",
-    "build": "webpack"
-  }
+    "build": "webpack;electron-packager . senkan --platform=win32"
+  },
+  "main": "electron.js"
 }
